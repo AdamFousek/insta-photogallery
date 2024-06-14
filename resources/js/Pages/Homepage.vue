@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import axios from "axios";
 import { ref } from "vue";
 
@@ -15,12 +15,10 @@ const getValue = async () => {
 </script>
 
 <template>
-    <div>
-        <h1>HOME</h1>
-        <router-link to="/test"> Take me to Test page </router-link>
-        <button @click.prevent="getValue">Trigger Endpoint</button>
-        <p v-if="response">{{ response.data }}</p>
-    </div>
+    <h1 class="text-lg">HOME</h1>
+    <router-link to="/test"> Take me to Test page </router-link>
+    <button @click.prevent="getValue">Trigger Endpoint</button>
+    <p v-if="response">{{ response.data }}</p>
 </template>
 
 <style scoped>
