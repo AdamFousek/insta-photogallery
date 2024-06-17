@@ -11,6 +11,7 @@ import HeaderTitle from "./Layout/HeaderTitle.vue";
 const routes = [
     {
         path: '/',
+        name: 'homepage',
         components: {
             default: Homepage,
             header: HeaderTitle
@@ -20,19 +21,30 @@ const routes = [
     {
         path: '/login',
         name: 'login',
-        component: Login
+        components: {
+            default: Login,
+            header: HeaderTitle
+        },
+        props: () => ({ header: 'Login' })
     },
     {
         path: '/register',
-        component: Register
+        name: 'register',
+        components: {
+            default: Register,
+            header: HeaderTitle
+        },
+        props: () => ({ header: 'Register' })
     },
     {
         path: '/profile/:username',
+        name: 'userDetail',
         component: UserDetail,
         props: true,
     },
     {
         path: '/profile',
+        name: 'profile',
         component: Profile,
         meta: {
             requiresAuth: true

@@ -10,3 +10,5 @@ Route::get('/user', function (Request $request) {
 Route::get("/test-me", function () {
     return 'Hello from Laravel!';
 });
+
+Route::post('/validate-email', \App\Http\Controllers\Api\Validation\EmailValidation::class);
