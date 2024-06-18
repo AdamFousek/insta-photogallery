@@ -23,12 +23,14 @@ class EmailValidation extends Controller
         if ($email === '') {
             return new JsonResponse([
                 'message' => trans('Email is required'),
+                'error' => true,
             ], Response::HTTP_BAD_REQUEST);
         }
 
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             return new JsonResponse([
                 'message' => trans('Invalid email address'),
+                'error' => true,
             ], Response::HTTP_BAD_REQUEST);
         }
 
@@ -36,11 +38,13 @@ class EmailValidation extends Controller
         if ($user !== null) {
             return new JsonResponse([
                 'message' => 'Email already exists',
+                'error' => true,
             ], Response::HTTP_BAD_REQUEST);
         }
 
         return new JsonResponse([
             'message' => 'Email is available',
+            'error' => false,
         ], Response::HTTP_OK);
     }
 }
