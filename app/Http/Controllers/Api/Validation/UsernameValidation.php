@@ -7,15 +7,15 @@ namespace App\Http\Controllers\Api\Validation;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Validator;
 
-class EmailValidation extends Controller
+class UsernameValidation extends Controller
 {
     public function __invoke(Request $request): JsonResponse
     {
         $validator = Validator::make($request->all(), [
-            'email' => 'required|unique:users|max:255|email',
+            'username' => 'required|unique:users|max:255|alpha_num',
         ]);
 
         if ($validator->fails()) {
@@ -26,7 +26,7 @@ class EmailValidation extends Controller
         }
 
         return new JsonResponse([
-            'message' => 'Email is available',
+            'message' => 'Username is available',
             'error' => false,
         ], Response::HTTP_OK);
     }

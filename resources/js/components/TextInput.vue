@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 
-defineProps(['modelValue']);
+defineProps(['modelValue', 'borderless']);
 
 defineEmits(['update:modelValue']);
 
@@ -18,7 +18,8 @@ defineExpose({ focus: () => input.value.focus() });
 
 <template>
     <input
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block w-full p-2.5 outline-none"
+            class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block w-full p-2.5 outline-none"
+            :class="{'border-gray-300': !borderless}"
             :value="modelValue"
             @input="$emit('update:modelValue', $event.target.value)"
             ref="input"

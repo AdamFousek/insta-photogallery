@@ -1,5 +1,6 @@
 import axios from "axios";
 import type ValidateEmailResponse from "../responses/ValidateEmailResponse";
+import type ValidateUsernameResponse from "../responses/ValidateUsernameResponse";
 
 export function useRepository() {
     const axiosInstance= axios.create({
@@ -8,7 +9,15 @@ export function useRepository() {
     });
 
     const validateEmail = async (email: string): Promise<ValidateEmailResponse> => {
-        return getData('POST', '/api/validate-email', {email});
+        return getData('POST', '/api/validate/email', {email});
+    }
+
+    const validateUsername = async (username: string): Promise<ValidateUsernameResponse> => {
+        return getData('POST', '/api/validate/username', {username});
+    }
+
+    const registerUser = async (username: string): Promise<ValidateUsernameResponse> => {
+        return getData('POST', '/api/user/register', {username});
     }
 
 
@@ -28,5 +37,6 @@ export function useRepository() {
 
     return {
         validateEmail,
+        validateUsername,
     }
 }
