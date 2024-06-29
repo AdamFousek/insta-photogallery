@@ -19,6 +19,10 @@ export function useRepository() {
     const registerUser = async (username: string): Promise<ValidateUsernameResponse> => {
         return getData('POST', '/api/user/register', {username});
     }
+    
+    const loginUser = async (username: string, password: string): Promise<ValidateUsernameResponse> => {
+        return getData('POST', '/api/user/login', { username, password })
+    }
 
 
     const getData = async (method: string, url: string, body: object) => {

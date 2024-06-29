@@ -103,7 +103,7 @@ const registerUser = () => {
 </script>
 
 <template>
-    <Wrapper class="mx-auto w-1/2">
+    <Wrapper class="mx-auto md:w-1/2">
         <h2 class="text-xl text-center">Register</h2>
         <form @submit.prevent="registerUser" class="flex flex-col gap-6">
             <div>
