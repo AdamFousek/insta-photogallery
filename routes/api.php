@@ -13,9 +13,9 @@ Route::get("/test-me", function () {
     return 'Hello from Laravel!';
 });
 
-Route::group(['prefix' => 'validation'], function () {
-    Route::post('/email', \App\Http\Controllers\Api\Validation\EmailValidation::class);
-    Route::post('/username', \App\Http\Controllers\Api\Validation\UsernameValidation::class);
+Route::group(['prefix' => 'validate'], function () {
+    Route::post('/email', \App\Http\Controllers\Api\Validation\EmailValidationController::class)->name('validate.email');
+    Route::post('/username', \App\Http\Controllers\Api\Validation\UsernameValidationController::class)->name('validate.username');
 });
 
 Route::group(['prefix' => 'user'], function () {
