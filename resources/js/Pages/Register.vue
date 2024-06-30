@@ -5,6 +5,7 @@ import {reactive, ref, watch} from 'vue'
 import PrimaryButton from '../components/PrimaryButton.vue'
 import MyLink from '../components/MyLink.vue'
 import { useRepository } from '../composable/repository'
+import RegistrationForm from "../Models/Forms/RegistrationForm";
 
 const email = ref('')
 const username = ref('')
@@ -93,11 +94,14 @@ const registerUser = () => {
         return
     }
 
-    useRepository().registerUser({
-        email: email.value,
+    const formData: RegistrationForm = {
         username: username.value,
-        password: password.value
-    })
+        email: email.value,
+        password: password.value,
+        password_confirmation: passwordConfirmation.value
+    }
+
+    useRepository().registerUser(formData)
 }
 
 </script>
